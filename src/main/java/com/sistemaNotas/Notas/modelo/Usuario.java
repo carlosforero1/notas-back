@@ -2,14 +2,15 @@ package com.sistemaNotas.Notas.modelo;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class Usuario {
 
     @Id
-    @GeneratedValue
-    private Long id_estudiante;
+    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    private Long id;
     private String nombre;
     private String apellido;
     private String correo;
@@ -17,13 +18,25 @@ public class Usuario {
     private int tipo_usuario;
     private int codigo;
 
-
-    public Long getId_estudiante() {
-        return id_estudiante;
+    public Usuario() {
     }
 
-    public void setId_estudiante(Long id_estudiante) {
-        this.id_estudiante = id_estudiante;
+    public Usuario(Long id, String nombre, String apellido, String correo, String contrasena, int tipo_usuario, int codigo) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.correo = correo;
+        this.contrasena = contrasena;
+        this.tipo_usuario = tipo_usuario;
+        this.codigo = codigo;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNombre() {

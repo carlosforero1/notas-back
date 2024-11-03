@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("sn-app")
 @CrossOrigin("http://localhost:3000")
 public class EstudianteControlador {
 

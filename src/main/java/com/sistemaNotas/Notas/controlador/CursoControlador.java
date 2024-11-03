@@ -1,9 +1,7 @@
 package com.sistemaNotas.Notas.controlador;
 
 import com.sistemaNotas.Notas.excepciones.CursoNotFoundException;
-import com.sistemaNotas.Notas.excepciones.UserNotFoundException;
 import com.sistemaNotas.Notas.modelo.Curso;
-import com.sistemaNotas.Notas.modelo.Usuario;
 import com.sistemaNotas.Notas.repositorio.CursoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

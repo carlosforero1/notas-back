@@ -1,7 +1,7 @@
 package com.sistemaNotas.Notas.excepciones;
 
+
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -9,14 +9,13 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import java.util.HashMap;
 import java.util.Map;
 
-@ControllerAdvice
-public class UserNotFoundAdvice {
 
+public class EstudianteNotFoundAdvice {
 
     @ResponseBody
-    @ExceptionHandler(UserNotFoundException.class)
+    @ExceptionHandler(EstudianteNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public Map<String,String> exceptionHandler(UserNotFoundException exception){
+    public Map<String,String> exceptionHandler(EstudianteNotFoundException exception){
 
         Map<String,String> errorMap=new HashMap<>();
         errorMap.put("errorMessage",exception.getMessage());
