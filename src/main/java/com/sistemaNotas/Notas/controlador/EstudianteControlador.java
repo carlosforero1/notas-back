@@ -1,13 +1,19 @@
 package com.sistemaNotas.Notas.controlador;
 
 import com.sistemaNotas.Notas.excepciones.CursoNotFoundException;
+import com.sistemaNotas.Notas.excepciones.UsuarioNotFoundException;
 import com.sistemaNotas.Notas.modelo.Curso;
 import com.sistemaNotas.Notas.modelo.Estudiante;
+import com.sistemaNotas.Notas.modelo.Usuario;
 import com.sistemaNotas.Notas.repositorio.EstudianteRepositorio;
+import com.sistemaNotas.Notas.servicio.EstudianteServicio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("sn-app")
@@ -15,40 +21,27 @@ import java.util.List;
 public class EstudianteControlador {
 
     @Autowired
-    private EstudianteRepositorio repositorio;
-
-    @PostMapping("/Estudiante")
-    Estudiante newEstudiante(@RequestBody Estudiante newEstudiante) {
-        return repositorio.save(newEstudiante);
+    private EstudianteServicio servicio;
+    @GetMapping("/estudiantes")
+    public List<Estudiante> obtenerEstudiante(){
+        List<Estudiante> estudiantes = servicio.listarEstudiante();
+        return estudiantes;
     }
 
-    @GetMapping("/Estudiantes")
-    List<Estudiante> getAllEstudiantes() {
-        return repositorio.findAll();
+    @PostMapping("/estudiantes")
+    public Estudiante agregarEstudiante(@RequestBody Estudiante estudiante){
+        return servicio.guardarEstudiante(estudiante);
     }
 
-    @GetMapping("/Estudiante/{id}")
-    Estudiante getEstudianteById(@PathVariable Long id) {
-        return repositorio.findById(id)
-                .orElseThrow(() -> new CursoNotFoundException(id));
-    }
-
-    @PutMapping("/Estudiante/{id}")
-    Estudiante updateEstudiante(@RequestBody Estudiante newEstudiante, @PathVariable Long id) {
-        return repositorio.findById(id)
-                .map(Estudiante -> {
-                    Estudiante.setMatricula(newEstudiante.getMatricula());
-                    return repositorio.save(Estudiante);
-                }).orElseThrow(() -> new CursoNotFoundException(id));
-    }
-
-    @DeleteMapping("/Estudiante/{id}")
-    String deleteEstudiante(@PathVariable Long id) {
-        if (!repositorio.existsById(id)) {
-            throw new CursoNotFoundException(id);
+    @GetMapping("/estudiantes/{id}")
+    public ResponseEntity<Estudiante> obtenerEstudiantePorID(@PathVariable Long id){
+        var empleado = servicio.buscarEstudiantePorId(id);
+        if (empleado == null){
+            throw new UsuarioNotFoundException(id);
         }
-        repositorio.deleteById(id);
-        return "el Estudiante con el id: " + id + " se ha eliminado correctamente.";
+        return ResponseEntity.ok(empleado);
     }
+
+
 
 }

@@ -12,9 +12,16 @@ public class Materia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private int id_profesor;
     private String nombre;
 
     private int creditos;
+
+    private int cantidad_estudiantes;
+
+    private String descripcion;
+
 
     public Long getId() {
         return id;

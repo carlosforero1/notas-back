@@ -13,8 +13,8 @@ public class EstudianteServicio implements IEstudianteServicio{
     public EstudianteRepositorio repositorio;
 
     @Override
-    public List<Estudiante> listarUsuario() {
-       return repositorio.findAll();
+    public List<Estudiante> listarEstudiante() {
+        return repositorio.findAll();
     }
 
     @Override

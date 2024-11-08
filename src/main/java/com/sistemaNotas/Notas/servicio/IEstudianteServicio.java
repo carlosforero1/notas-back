@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface IEstudianteServicio {
 
-    public List<Estudiante> listarUsuario();
+    public List<Estudiante> listarEstudiante();
 
     public Estudiante buscarEstudiantePorId(Long id);
 

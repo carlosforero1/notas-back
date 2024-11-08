@@ -1,11 +1,11 @@
 package com.sistemaNotas.Notas.modelo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Curso.updateBy", query = "update Curso c set ")
+})
 public class Curso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

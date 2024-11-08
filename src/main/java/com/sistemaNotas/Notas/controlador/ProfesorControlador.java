@@ -31,18 +31,6 @@ public class ProfesorControlador {
                 .orElseThrow(() -> new CursoNotFoundException(id));
     }
 
-    @PutMapping("/Profesor/{id}")
-    Profesor updateProfesor(@RequestBody Profesor newProfesor, @PathVariable Long id) {
-        return repositorio.findById(id)
-                .map(Profesor -> {
-                    Profesor.setNombre(newProfesor.getNombre());
-                    Profesor.setApellido(newProfesor.getApellido());
-                    Profesor.setCodigo(newProfesor.getCodigo());
-                    Profesor.setDepartamento(newProfesor.getDepartamento());
-                    Profesor.setCorreo(newProfesor.getCorreo());
-                    return repositorio.save(Profesor);
-                }).orElseThrow(() -> new CursoNotFoundException(id));
-    }
 
     @DeleteMapping("/Profesor/{id}")
     String deleteProfesor(@PathVariable Long id) {
