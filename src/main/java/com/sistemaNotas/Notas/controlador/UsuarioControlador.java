@@ -1,6 +1,8 @@
 package com.sistemaNotas.Notas.controlador;
 
 import com.sistemaNotas.Notas.excepciones.UsuarioNotFoundException;
+import com.sistemaNotas.Notas.modelo.Estudiante;
+import com.sistemaNotas.Notas.modelo.Profesor;
 import com.sistemaNotas.Notas.modelo.Usuario;
 import com.sistemaNotas.Notas.repositorio.UsuarioRepositorio;
 import com.sistemaNotas.Notas.servicio.IUsuarioServicio;
@@ -21,7 +23,6 @@ import java.util.Map;
 public class UsuarioControlador {
     @Autowired
     private IUsuarioServicio usuarioServicio;
-
 
     @GetMapping("/usuarios")
     public List<Usuario> obtenerUsuario(){
@@ -74,4 +75,32 @@ public class UsuarioControlador {
         respuesta.put("Elimnado",Boolean.TRUE);
         return ResponseEntity.ok(respuesta);
     }
+
+    @PostMapping("/registro/estudiante")
+    public String registroEstudiante (@RequestBody Estudiante estudiante) {
+        try {
+            usuarioServicio.registroProfesor(estudiante.getNombre(),estudiante.getApellido(),
+                    estudiante.getCorreo(), estudiante.getContrasena(), estudiante.getTipo_usuario());
+
+        }catch (Exception e){
+            e.getMessage();
+        }finally {
+            return "registro extoso";
+        }
+    }
+
+    @PostMapping("/registro/profesor")
+    public String registroProfesor (@RequestBody Profesor profesor) {
+        try {
+            usuarioServicio.registroProfesor(profesor.getNombre(),profesor.getApellido(),
+                    profesor.getCorreo(), profesor.getContrasena(), profesor.getTipo_usuario());
+
+        }catch (Exception e){
+            e.getMessage();
+        }finally {
+            return "registro extoso";
+        }
+
+    }
+
 }
