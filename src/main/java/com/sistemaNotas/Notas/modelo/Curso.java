@@ -3,9 +3,6 @@ package com.sistemaNotas.Notas.modelo;
 import jakarta.persistence.*;
 
 @Entity
-@NamedQueries({
-        @NamedQuery(name = "Curso.updateBy", query = "update Curso c set ")
-})
 public class Curso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

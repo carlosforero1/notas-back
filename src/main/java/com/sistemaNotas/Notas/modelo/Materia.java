@@ -11,7 +11,7 @@ public class Materia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     private int id_profesor;
     private String nombre;
@@ -23,11 +23,11 @@ public class Materia {
     private String descripcion;
 
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
