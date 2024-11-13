@@ -54,7 +54,6 @@ public class UsuarioControlador {
             usuario.setApellido(usuarioRecibido.getApellido());
             usuario.setCorreo(usuarioRecibido.getCorreo());
             usuario.setContrasena(usuarioRecibido.getContrasena());
-            usuario.setTipo_usuario(usuarioRecibido.getTipo_usuario());
             usuario.setCodigo(usuarioRecibido.getCodigo());
 
             usuarioServicio.guardarUsuario(usuario);
@@ -78,22 +77,19 @@ public class UsuarioControlador {
 
     @PostMapping("/registro/estudiante")
     public String registroEstudiante (@RequestBody Estudiante estudiante) {
-        try {
             usuarioServicio.registroProfesor(estudiante.getNombre(),estudiante.getApellido(),
-                    estudiante.getCorreo(), estudiante.getContrasena(), estudiante.getTipo_usuario());
+                    estudiante.getCorreo(), estudiante.getContrasena());
 
-        }catch (Exception e){
-            e.getMessage();
-        }finally {
+
             return "registro extoso";
-        }
+
     }
 
     @PostMapping("/registro/profesor")
     public String registroProfesor (@RequestBody Profesor profesor) {
         try {
             usuarioServicio.registroProfesor(profesor.getNombre(),profesor.getApellido(),
-                    profesor.getCorreo(), profesor.getContrasena(), profesor.getTipo_usuario());
+                    profesor.getCorreo(), profesor.getContrasena());
 
         }catch (Exception e){
             e.getMessage();

@@ -2,6 +2,7 @@ package com.sistemaNotas.Notas.servicio;
 
 import com.sistemaNotas.Notas.modelo.Estudiante;
 import com.sistemaNotas.Notas.modelo.Profesor;
+import com.sistemaNotas.Notas.modelo.Role;
 import com.sistemaNotas.Notas.modelo.Usuario;
 import com.sistemaNotas.Notas.repositorio.EstudianteRepositorio;
 import com.sistemaNotas.Notas.repositorio.ProfesorRepositorio;
@@ -47,24 +48,24 @@ public class UsuarioServicio implements IUsuarioServicio{
         usuarioRepositorio.delete(usuario);
     }
 
-    public Estudiante registroEstudiante(String nombre, String apellido, String correo, String contrasena, int tipo_usuario) {
+    public Estudiante registroEstudiante(String nombre, String apellido, String correo, String contrasena) {
         Estudiante estudiante = new Estudiante();
         estudiante.setNombre(nombre);
         estudiante.setApellido(apellido);
         estudiante.setCorreo(correo);
-        estudiante.setTipo_usuario(1);
+        estudiante.setRole(Role.STUDENT);
         estudiante.setContrasena(passwordEncoder.encode(contrasena));
         return estudianteRepositorio.save(estudiante);
     }
 
     @Override
-    public Profesor registroProfesor(String nombre, String apellido, String correo, String contrasena, int tipo_usuario) {
+    public Profesor registroProfesor(String nombre, String apellido, String correo, String contrasena) {
         Profesor profesor = new Profesor();
         profesor.setNombre(nombre);
         profesor.setApellido(apellido);
         profesor.setCorreo(correo);
         profesor.setContrasena(passwordEncoder.encode(contrasena));
-        profesor.setTipo_usuario(2);
+        profesor.setRole(Role.PROFESSOR);
         return profesorRepositorio.save(profesor);
     }
 }
