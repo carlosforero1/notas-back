@@ -1,9 +1,7 @@
 package com.sistemaNotas.Notas.modelo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
 
 @Entity
 public class Usuario{
@@ -15,21 +13,14 @@ public class Usuario{
     private String apellido;
     private String correo;
     private String contrasena;
-    private int tipo_usuario;
+    @Enumerated(EnumType.STRING)
+    private Role role;
     private int codigo;
+    private String nombreUsuario;
 
     public Usuario() {
     }
 
-    public Usuario(int id, String nombre, String apellido, String correo, String contrasena, int tipo_usuario, int codigo) {
-        this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.correo = correo;
-        this.contrasena = contrasena;
-        this.tipo_usuario = tipo_usuario;
-        this.codigo = codigo;
-    }
 
     public int getId() {
         return id;
@@ -71,12 +62,12 @@ public class Usuario{
         this.contrasena = contrasena;
     }
 
-    public int getTipo_usuario() {
-        return tipo_usuario;
+    public Role getRole() {
+        return role;
     }
 
-    public void setTipo_usuario(int tipo_usuario) {
-        this.tipo_usuario = tipo_usuario;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public int getCodigo() {
@@ -85,5 +76,13 @@ public class Usuario{
 
     public void setCodigo(int codigo) {
         this.codigo = codigo;
+    }
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
     }
 }
