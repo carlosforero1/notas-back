@@ -15,7 +15,4 @@ public interface IUsuarioServicio {
 
     public void eliminarUsuario(Usuario usuario);
 
-    public Estudiante registroEstudiante(String nombre, String apellido, String correo, String contrasena);
-
-    public Profesor registroProfesor(String nombre, String apellido, String correo, String contrasena);
 }

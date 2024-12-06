@@ -11,23 +11,17 @@ public class Materia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    private int id_profesor;
+    private Long id;
     private String nombre;
-
-    private int creditos;
-
-    private int cantidad_estudiantes;
-
+    private String codigo;
     private String descripcion;
+    private String horario;
 
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -39,11 +33,27 @@ public class Materia {
         this.nombre = nombre;
     }
 
-    public int getCreditos() {
-        return creditos;
+    public String getCodigo() {
+        return codigo;
     }
 
-    public void setCreditos(int creditos) {
-        this.creditos = creditos;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getHorario() {
+        return horario;
+    }
+
+    public void setHorario(String horario) {
+        this.horario = horario;
     }
 }

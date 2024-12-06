@@ -5,40 +5,57 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+import java.time.LocalDate;
+
 @Entity
 public class Estudiante extends Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    private int id_usuarios;
-
-    private int id_materias;
+    private String nombre;
+    private String apellido;
+    private String correo;
     private String matricula;
+    private LocalDate fechaRegistro;
 
-
+    @Override
     public int getId() {
         return id;
     }
 
+    @Override
     public void setId(int id) {
         this.id = id;
     }
 
-    public int getId_usuarios() {
-        return id_usuarios;
+    @Override
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setId_usuarios(int id_usuarios) {
-        this.id_usuarios = id_usuarios;
+    @Override
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public int getId_materias() {
-        return id_materias;
+    @Override
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setId_materias(int id_materias) {
-        this.id_materias = id_materias;
+    @Override
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    @Override
+    public String getCorreo() {
+        return correo;
+    }
+
+    @Override
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
     public String getMatricula() {
@@ -47,5 +64,13 @@ public class Estudiante extends Usuario {
 
     public void setMatricula(String matricula) {
         this.matricula = matricula;
+    }
+
+    public LocalDate getFechaRegistro() {
+        return fechaRegistro;
+    }
+
+    public void setFechaRegistro(LocalDate fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
     }
 }
