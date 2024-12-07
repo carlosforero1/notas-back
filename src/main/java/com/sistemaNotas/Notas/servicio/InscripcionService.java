@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class InscripcionService implements IInscripcionService {
@@ -23,6 +24,11 @@ public class InscripcionService implements IInscripcionService {
         }
 
         inscripcionRepositorio.save(new InscripcionEstudiante(estudiante, materia, LocalDate.now()));
+    }
+
+    @Override
+    public List<InscripcionEstudiante> listarInscripciones() {
+        return inscripcionRepositorio.findAll();
     }
 
 
