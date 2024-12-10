@@ -17,4 +17,36 @@ public class Nota {
 
     private BigDecimal nota;
     private LocalDate fecha;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public InscripcionEstudiante getInscripcionEstudiante() {
+        return inscripcionEstudiante;
+    }
+
+    public void setInscripcionEstudiante(InscripcionEstudiante inscripcionEstudiante) {
+        this.inscripcionEstudiante = inscripcionEstudiante;
+    }
+
+    public BigDecimal getNota() {
+        return nota;
+    }
+
+    public void setNota(BigDecimal nota) {
+        this.nota = nota;
+    }
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
 }

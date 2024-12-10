@@ -18,8 +18,25 @@
         private String nombreUsuario;
 
         private boolean activo;
+        @ManyToOne
+        @JoinColumn(name = "rol_id", nullable = false)
+        private Rol rol;
 
         public Usuario() {
+        }
+
+        public Usuario(int id, String nombre, String apellido, String correo,
+                       String contrasena, int codigo, String nombreUsuario,
+                       boolean activo, Rol rol) {
+            this.id = id;
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.correo = correo;
+            this.contrasena = contrasena;
+            this.codigo = codigo;
+            this.nombreUsuario = nombreUsuario;
+            this.activo = activo;
+            this.rol = rol;
         }
 
         public int getId() {
@@ -62,7 +79,6 @@
             this.contrasena = contrasena;
         }
 
-
         public int getCodigo() {
             return codigo;
         }
@@ -85,5 +101,13 @@
 
         public void setActivo(boolean activo) {
             this.activo = activo;
+        }
+
+        public Rol getRol() {
+            return rol;
+        }
+
+        public void setRol(Rol rol) {
+            this.rol = rol;
         }
     }

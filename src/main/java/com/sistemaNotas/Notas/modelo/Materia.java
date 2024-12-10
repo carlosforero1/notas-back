@@ -1,9 +1,8 @@
 package com.sistemaNotas.Notas.modelo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 
@@ -12,10 +11,17 @@ public class Materia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nombre;
-    private String codigo;
     private String descripcion;
-    private String horario;
+    private Integer creditos;
+
+    @ManyToOne
+    @JoinColumn(name = "id_profesor", nullable = false)
+    private Usuario profesor;
+
+    @OneToMany(mappedBy = "materia")
+    private List<InscripcionEstudiante> inscripciones;
 
     public Long getId() {
         return id;
@@ -33,14 +39,6 @@ public class Materia {
         this.nombre = nombre;
     }
 
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
     public String getDescripcion() {
         return descripcion;
     }
@@ -49,11 +47,27 @@ public class Materia {
         this.descripcion = descripcion;
     }
 
-    public String getHorario() {
-        return horario;
+    public Integer getCreditos() {
+        return creditos;
     }
 
-    public void setHorario(String horario) {
-        this.horario = horario;
+    public void setCreditos(Integer creditos) {
+        this.creditos = creditos;
+    }
+
+    public Usuario getProfesor() {
+        return profesor;
+    }
+
+    public void setProfesor(Usuario profesor) {
+        this.profesor = profesor;
+    }
+
+    public List<InscripcionEstudiante> getInscripciones() {
+        return inscripciones;
+    }
+
+    public void setInscripciones(List<InscripcionEstudiante> inscripciones) {
+        this.inscripciones = inscripciones;
     }
 }

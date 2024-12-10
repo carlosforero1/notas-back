@@ -35,28 +35,10 @@ public class UsuarioControlador {
         return ResponseEntity.ok(empleado);
     }
 
-    @PutMapping("/usuarios/{id}")
-    public ResponseEntity<Usuario> Actualizar(@PathVariable Long id, @RequestBody Usuario usuarioRecibido) {
-        Usuario usuario = usuarioServicio.buscarEmpeladoPorId(id);
-
-            usuario.setNombre(usuarioRecibido.getNombre());
-            usuario.setApellido(usuarioRecibido.getApellido());
-            usuario.setCorreo(usuarioRecibido.getCorreo());
-            usuario.setContrasena(usuarioRecibido.getContrasena());
-            usuario.setCodigo(usuarioRecibido.getCodigo());
-
-            usuarioServicio.guardarUsuario(usuario);
-            return ResponseEntity.ok(usuario);
-        }
-
-
     @DeleteMapping("/usuarios/{id}")
     public ResponseEntity<Map<String, Boolean>> eliminar(@PathVariable Long id) {
         Usuario usuario = usuarioServicio.buscarEmpeladoPorId(id);
-
             usuarioServicio.eliminarUsuario(usuario);
-
-
         Map<String, Boolean> respuesta = new HashMap<>();
         respuesta.put("Elimnado", Boolean.TRUE);
         return ResponseEntity.ok(respuesta);

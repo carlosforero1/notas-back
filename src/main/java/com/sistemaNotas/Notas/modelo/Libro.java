@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class libros {
+public class Libro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  int id;
@@ -16,6 +16,7 @@ public class libros {
     private int anio_publicacion;
     private String genero;
     private int copias_disponibles;
+
 
     public int getId() {
         return id;
