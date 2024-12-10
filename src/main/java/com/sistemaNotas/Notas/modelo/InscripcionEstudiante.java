@@ -12,7 +12,7 @@ public class InscripcionEstudiante {
 
     @ManyToOne
     @JoinColumn(name = "estudiante_id", nullable = false)
-    private Estudiante estudiante;
+    private Usuario estudiante;
 
     @ManyToOne
     @JoinColumn(name = "materia_id", nullable = false)
@@ -23,7 +23,7 @@ public class InscripcionEstudiante {
     public InscripcionEstudiante() {}
 
     // Constructor con argumentos
-    public InscripcionEstudiante(Estudiante estudiante, Materia materia, LocalDate fechaInscripcion) {
+    public InscripcionEstudiante(Usuario estudiante, Materia materia, LocalDate fechaInscripcion) {
         this.estudiante = estudiante;
         this.materia = materia;
         this.fechaInscripcion = fechaInscripcion;
@@ -37,11 +37,11 @@ public class InscripcionEstudiante {
         this.id = id;
     }
 
-    public Estudiante getEstudiante() {
+    public Usuario getEstudiante() {
         return estudiante;
     }
 
-    public void setEstudiante(Estudiante estudiante) {
+    public void setEstudiante(Usuario estudiante) {
         this.estudiante = estudiante;
     }
 

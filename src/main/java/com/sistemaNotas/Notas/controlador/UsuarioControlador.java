@@ -11,8 +11,8 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("sn-app")
-@CrossOrigin("http://localhost:3000")
+@RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:3000")
 public class UsuarioControlador {
     @Autowired
     private IUsuarioServicio usuarioServicio;

@@ -10,36 +10,28 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/libros")
+@CrossOrigin(origins = "http://localhost:3000")
 public class LibrosControlador {
 
     @Autowired
     private LibroServicio libroServicio;
 
-    // Obtener todos los libros
     @GetMapping
     public List<Libro> obtenerTodosLosLibros() {
         return libroServicio.obtenerTodosLosLibros();
     }
 
-    // Crear un nuevo libro
+
     @PostMapping
     public ResponseEntity<Libro> crearLibro(@RequestBody Libro libro) {
         return ResponseEntity.ok(libroServicio.guardarLibro(libro));
     }
 
-    // Obtener un libro por ID
     @GetMapping("/{id}")
     public ResponseEntity<Libro> obtenerLibroPorId(@PathVariable int id) {
         return ResponseEntity.ok(libroServicio.obtenerLibroPorId(id));
     }
 
-    // Actualizar un libro
-    @PutMapping("/{id}")
-    public ResponseEntity<Libro> actualizarLibro(@PathVariable int id, @RequestBody Libro libro) {
-        return ResponseEntity.ok(libroServicio.actualizarLibro(id, libro));
-    }
-
-    // Eliminar un libro
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarLibro(@PathVariable int id) {
         libroServicio.eliminarLibro(id);
