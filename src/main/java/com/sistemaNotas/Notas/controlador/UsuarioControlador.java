@@ -14,35 +14,29 @@ import java.util.Map;
 @RequestMapping("/api")
 @CrossOrigin(origins = "http://localhost:3000")
 public class UsuarioControlador {
+
     @Autowired
-    private IUsuarioServicio usuarioServicio;
+    private IUsuarioServicio usuarioService;
 
     @GetMapping("/usuarios")
-    public List<Usuario> obtenerUsuario() {
-        List<Usuario> usuario = usuarioServicio.listarUsuario();
-        return usuario;
+    public List<Usuario> getAllUsuarios() {
+        return usuarioService.listarUsuario();
     }
 
     @PostMapping("/usuarios")
-    public Usuario agregarUsuario(@RequestBody Usuario usuario) {
-        return usuarioServicio.guardarUsuario(usuario);
-    }
-
-    @GetMapping("/usuarios/{id}")
-    public ResponseEntity<Usuario> obtenerUsuarioPorID(@PathVariable Long id) {
-        var empleado = usuarioServicio.buscarEmpeladoPorId(id);
-
-        return ResponseEntity.ok(empleado);
+    public Usuario createUsuario(@RequestBody Usuario usuario) {
+        return usuarioService.guardarUsuario(usuario);
     }
 
     @DeleteMapping("/usuarios/{id}")
-    public ResponseEntity<Map<String, Boolean>> eliminar(@PathVariable Long id) {
-        Usuario usuario = usuarioServicio.buscarEmpeladoPorId(id);
-            usuarioServicio.eliminarUsuario(usuario);
-        Map<String, Boolean> respuesta = new HashMap<>();
-        respuesta.put("Elimnado", Boolean.TRUE);
-        return ResponseEntity.ok(respuesta);
+    public ResponseEntity<?> deleteUsuario(@PathVariable long id) {
+        usuarioService.eliminarUsuario(id);
+        return  ResponseEntity.ok().build();
     }
 
-
+    @PutMapping("/usuarios/{id}")
+    public ResponseEntity<Usuario>  actualzarUsuario(@PathVariable Long id, @RequestBody Usuario usuario) {
+        Usuario usuarioActualizado = usuarioService.actualizarUsuario(id, usuario);
+        return ResponseEntity.ok(usuarioActualizado);
+    }
 }

@@ -18,16 +18,15 @@
         private String nombreUsuario;
 
         private boolean activo;
-        @ManyToOne
-        @JoinColumn(name = "rol_id", nullable = false)
-        private Rol rol;
+
+        private Integer rol;
 
         public Usuario() {
         }
 
         public Usuario(int id, String nombre, String apellido, String correo,
                        String contrasena, int codigo, String nombreUsuario,
-                       boolean activo, Rol rol) {
+                       boolean activo, Integer rol) {
             this.id = id;
             this.nombre = nombre;
             this.apellido = apellido;
@@ -103,11 +102,11 @@
             this.activo = activo;
         }
 
-        public Rol getRol() {
+        public Integer getRol() {
             return rol;
         }
 
-        public void setRol(Rol rol) {
+        public void setRol(Integer rol) {
             this.rol = rol;
         }
     }

@@ -1,5 +1,6 @@
 package com.sistemaNotas.Notas.modelo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -15,6 +16,7 @@ public class InscripcionEstudiante {
     private Usuario estudiante;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "materia_id", nullable = false)
     private Materia materia;
 
@@ -22,7 +24,6 @@ public class InscripcionEstudiante {
 
     public InscripcionEstudiante() {}
 
-    // Constructor con argumentos
     public InscripcionEstudiante(Usuario estudiante, Materia materia, LocalDate fechaInscripcion) {
         this.estudiante = estudiante;
         this.materia = materia;

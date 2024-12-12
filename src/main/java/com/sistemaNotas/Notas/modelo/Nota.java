@@ -18,6 +18,8 @@ public class Nota {
     private BigDecimal nota;
     private LocalDate fecha;
 
+    private String tipo;
+
     public Long getId() {
         return id;
     }
@@ -48,5 +50,13 @@ public class Nota {
 
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 }

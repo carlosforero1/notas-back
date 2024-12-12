@@ -22,11 +22,11 @@ public class LibroServicio {
         return libroRepositorio.save(libro);
     }
 
-    public Libro obtenerLibroPorId(int id) {
+    public Libro obtenerLibroPorId(Long id) {
         Optional<Libro> libro = libroRepositorio.findById(id);
         return libro.orElseThrow(() -> new RuntimeException("Libro no encontrado"));
     }
-    public void eliminarLibro(int id) {
+    public void eliminarLibro(Long id) {
         if (!libroRepositorio.existsById(id)) {
             throw new RuntimeException("Libro no encontrado");
         }
