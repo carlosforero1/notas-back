@@ -22,19 +22,13 @@ public class NotaServicio {
         return notaRepository.save(nota);
     }
 
-    public Nota updateNota(Long id, Nota notaDetails) {
-        Nota nota = notaRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Nota no encontrada con id: " + id));
-        nota.setFecha(notaDetails.getFecha());
-        nota.setNota(notaDetails.getNota());
-        nota.setTipo(notaDetails.getTipo());
+    public Nota updateNota(Long id, Nota nota) {
+        nota.setId(id);
         return notaRepository.save(nota);
     }
 
     public void deleteNota(Long id) {
-        Nota nota = notaRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Nota no encontrada con id: " + id));
-        notaRepository.delete(nota);
+        notaRepository.deleteById(id);
     }
 
 }

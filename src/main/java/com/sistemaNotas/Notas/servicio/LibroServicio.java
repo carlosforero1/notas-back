@@ -32,5 +32,10 @@ public class LibroServicio {
         }
         libroRepositorio.deleteById(id);
     }
+
+    public Libro actualizarLibro(int id, Libro libroNuevo) {
+            libroNuevo.setId(id);
+            return libroRepositorio.save(libroNuevo);
+    }
 }
 

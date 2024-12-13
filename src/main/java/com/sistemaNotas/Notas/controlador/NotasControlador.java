@@ -27,8 +27,9 @@ public class NotasControlador {
     }
 
     @PutMapping("/{id}")
-    public Nota updateNota(@PathVariable Long id, @RequestBody Nota notaDetails) {
-        return notaService.updateNota(id, notaDetails);
+    public ResponseEntity<Nota> updateNota(@PathVariable Long id, @RequestBody Nota nota) {
+        Nota notaActualizada = notaService.updateNota(id, nota);
+        return ResponseEntity.ok(notaActualizada);
     }
 
     @DeleteMapping("/{id}")

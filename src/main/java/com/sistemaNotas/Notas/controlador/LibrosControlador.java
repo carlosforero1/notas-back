@@ -9,13 +9,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/libros")
+@CrossOrigin(origins = "http://localhost:3000")
 public class LibrosControlador {
 
     @Autowired
     private LibroServicio libroServicio;
 
 
-    @GetMapping("/api/libros")
+    @GetMapping
     public List<Libro> obtenerTodosLosLibros() {
         return libroServicio.obtenerTodosLosLibros();
     }
@@ -30,5 +32,12 @@ public class LibrosControlador {
         libroServicio.eliminarLibro(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Libro> actualizarLibro(@PathVariable int id, @RequestBody Libro libroNuevo) {
+        Libro libroActualizado = libroServicio.actualizarLibro(id, libroNuevo);
+            return ResponseEntity.ok(libroActualizado); // Devuelve el libro actualizado con el código HTTP 200
+        }
+
 }
 
